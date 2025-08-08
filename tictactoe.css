@@ -1,0 +1,128 @@
+/* tictactoe.css */
+:root {
+    --cell-size: 100px;
+    --mark-size: calc(var(--cell-size) * .9);
+    --board-background: #fff;
+    --cell-background: #f0f0f0;
+    --x-color: #e74c3c;
+    --o-color: #3498db;
+    --text-color: #333;
+    --border-color: #ccc;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.game-container {
+    text-align: center;
+}
+
+.game-title {
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+.game-options {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+#opponent {
+    padding: 5px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(3, var(--cell-size));
+    grid-template-rows: repeat(3, var(--cell-size));
+    gap: 5px;
+    background-color: var(--border-color);
+    border: 5px solid var(--border-color);
+    border-radius: 5px;
+}
+
+/* Disable clicks when it's the AI's turn */
+.game-board.waiting {
+    pointer-events: none;
+}
+
+.cell {
+    width: var(--cell-size);
+    height: var(--cell-size);
+    background-color: var(--board-background);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 4rem;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+}
+
+.cell:not(.x):not(.o):hover {
+    background-color: var(--cell-background);
+}
+
+.cell.x {
+    color: var(--x-color);
+}
+
+.cell.o {
+    color: var(--o-color);
+}
+
+.game-status {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: var(--text-color);
+    min-height: 1.5em;
+}
+
+.game-end-screen {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    font-size: 2rem;
+}
+
+.game-end-screen.show {
+    display: flex;
+}
+
+#restartButton {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#restartButton:hover {
+    background-color: #219d53;
+}
